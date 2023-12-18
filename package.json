@@ -4,13 +4,14 @@
   "description": "An E-commerce application",
   "main": "index.js",
   "engines": {
-    "node": "18.x"
+    "node": "16.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "node build",
+    "build": "mkdir -p swagger && cp -r node_modules/swagger-ui-dist/* swagger/ && node index.js",
+    "copy-swagger": "copyfiles -f node_modules/swagger-ui-dist/* swagger/",
     "vercel-build": "echo hello"
   },
   "keywords": [],
@@ -30,6 +31,10 @@
     "pm2": "^5.3.0",
     "rotating-file-stream": "^3.1.1",
     "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-dist": "^5.10.5",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
   }
 }
