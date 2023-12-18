@@ -40,7 +40,8 @@ app.options("*", cors());
 app.use(bodyParser.json());
 
 // create a write stream (in append mode) and setup the logger
-var logDirectory = path.join(__dirname, "log");
+// var logDirectory = path.join(__dirname, "log");
+var logDirectory = path.join("/tmp", "log");
 var ecommerceLogStream = rfs.createStream("ecommerce.log", {
   interval: "1d",
   path: logDirectory,
