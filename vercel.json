@@ -1,15 +1,13 @@
 {
   "version": 2,
-  "functions": {
-    "api-docs": {
-      "src": "/api-docs/(.*)",
-      "output": "/api-docs/index.html"
-    }
-  },
   "builds": [
     {
       "src": "./index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "/api-docs/(.*)",
+      "output": "/api-docs/index.html"
     }
   ],
   "routes": [
