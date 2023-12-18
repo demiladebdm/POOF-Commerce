@@ -13,7 +13,7 @@ module.exports = {
       },
     },
     externalDocs: {
-      url: "/swagger/v1/swagger.json",
+      url: "/api-docs/v1/swagger.json",
       description: "Export the API definition as a JSON file",
     },
     securityDefinitions: {
