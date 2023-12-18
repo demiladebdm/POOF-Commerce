@@ -12,6 +12,8 @@ const os = require("os");
 // const errorHandler = require("./middlewares/errorHandler");
 const { swaggerUi, specs } = require("./swagger");
 
+const { invalidPathHandler } = require("./middlewares/errorHandler");
+
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 6000;
@@ -87,6 +89,8 @@ app.use(`${API}/reviews`, reviewRoute);
 app.use(`${API}/carts`, cartRoute);
 app.use(`${API}/cart-items`, cartItemRoute);
 app.use(`${API}/billing-address`, billingRoute);
+
+app.use(invalidPathHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} + ${API}`);

@@ -10,5 +10,11 @@ const errorHandler = (err, req, res, next) => {
   return res.status(500).json({ error: err })
 };
 
+const invalidPathHandler = (req, res, next) => {
+  let error = new Error("Invalid Path");
+  error.statusCode = 404;
+  next(error);
+};
 
-module.exports = errorHandler;
+
+module.exports = { errorHandler, invalidPathHandler };
