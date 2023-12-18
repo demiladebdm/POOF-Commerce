@@ -1,7 +1,7 @@
 {
   "name": "poof-commerce-api",
   "version": "1.0.0",
-  "description": "An Ecommerce applicatio",
+  "description": "An E-commerce application",
   "main": "index.js",
   "engines": {
     "node": "18.x"
@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
