@@ -7,7 +7,7 @@ var path = require("path");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const os = require("os")
+const os = require("os");
 // const authJwt = require("./middlewares/jwt");
 // const errorHandler = require("./middlewares/errorHandler");
 const { swaggerUi, specs } = require("./swagger");
@@ -17,7 +17,7 @@ dotenv.config();
 const PORT = process.env.PORT || 6000;
 const API = process.env.API_URL;
 
-console.log("os", os.cpus().length)
+console.log("os", os.cpus().length);
 //Database Connection
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -40,9 +40,10 @@ app.options("*", cors());
 app.use(bodyParser.json());
 
 // create a write stream (in append mode) and setup the logger
+var logDirectory = path.join(__dirname, "log");
 var ecommerceLogStream = rfs.createStream("ecommerce.log", {
   interval: "1d",
-  path: path.join(__dirname, "log"),
+  path: logDirectory,
 });
 app.use(morgan("combined", { stream: ecommerceLogStream }));
 
@@ -71,7 +72,6 @@ const cartRoute = require("./routes/cart");
 const cartItemRoute = require("./routes/cartItems");
 const billingRoute = require("./routes/billing");
 
-
 app.use(`${API}/auth`, authRoute);
 app.use(`${API}/products`, productRoute);
 app.use(`${API}/categories`, categoryRoute);
@@ -86,7 +86,6 @@ app.use(`${API}/reviews`, reviewRoute);
 app.use(`${API}/carts`, cartRoute);
 app.use(`${API}/cart-items`, cartItemRoute);
 app.use(`${API}/billing-address`, billingRoute);
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} + ${API}`);
